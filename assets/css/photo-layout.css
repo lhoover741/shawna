@@ -1,70 +1,73 @@
-/* Safe photo layout overrides for Ravishing Beauté */
-.hero-collage{
-  position:relative;
-  min-height:620px;
-  max-width:650px;
-  margin-left:auto;
+/* HERO – controlled editorial overlap */
+.hero-collage {
+  position: relative;
+  max-width: 620px;
+  margin-left: auto;
 }
-.hero-img{
-  position:absolute;
-  border-radius:28px;
-  box-shadow:var(--shadow);
-  border:8px solid rgba(255,255,255,.78);
-  background:#fff;
-  object-fit:cover;
+
+.hero-img {
+  position: absolute;
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  border: 6px solid #fff;
 }
-.hero-img.tall{
-  width:66%;
-  height:82%;
-  right:3%;
-  top:8%;
-  z-index:1;
+
+.hero-img.tall {
+  width: 65%;
+  right: 0;
+  top: 10%;
+  z-index: 1;
 }
-.hero-img.small{
-  width:48%;
-  height:34%;
-  left:0;
-  z-index:2;
+
+.hero-img.top {
+  width: 48%;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
-.hero-img.top{top:4%;}
-.hero-img.bottom{
-  bottom:9%;
-  left:12%;
-  z-index:3;
+
+.hero-img.bottom {
+  width: 48%;
+  bottom: 0;
+  left: 10%;
+  z-index: 3;
 }
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:18px;
-  align-items:start;
+
+/* GALLERY – premium offset grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
 }
-.gallery-grid img{
-  width:100%;
-  height:420px;
-  border-radius:30px;
-  box-shadow:var(--shadow);
-  background:#fff;
-  object-fit:cover;
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 26px;
+  box-shadow: var(--shadow);
 }
-.gallery-grid img:nth-child(1){grid-column:span 5;height:500px;}
-.gallery-grid img:nth-child(2){grid-column:span 4;height:430px;margin-top:48px;}
-.gallery-grid img:nth-child(3){grid-column:span 3;height:480px;}
-.gallery-grid img:nth-child(4){grid-column:span 4;height:390px;}
-.gallery-grid img:nth-child(5){grid-column:span 4;height:500px;margin-top:-40px;}
-.gallery-grid img:nth-child(6){grid-column:span 4;height:420px;}
-.gallery-grid img:nth-child(7){grid-column:span 6;height:460px;}
-.gallery-grid img:nth-child(8){grid-column:span 6;height:460px;margin-top:36px;}
-@media(max-width:900px){
-  .hero-collage{min-height:500px;margin:20px auto 0;}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);}
-  .gallery-grid img,.gallery-grid img:nth-child(n){grid-column:auto;height:390px;margin-top:0;}
-}
-@media(max-width:560px){
-  .hero-collage{min-height:430px;}
-  .hero-img.tall{width:72%;height:78%;right:0;top:7%;}
-  .hero-img.small{width:52%;height:30%;}
-  .hero-img.top{top:0;}
-  .hero-img.bottom{bottom:5%;left:4%;}
-  .gallery-grid{grid-template-columns:1fr;}
-  .gallery-grid img,.gallery-grid img:nth-child(n){height:auto;aspect-ratio:4/5;grid-column:auto;margin-top:0;}
+
+/* stagger layout */
+.gallery-grid img:nth-child(1) { grid-column: span 5; }
+.gallery-grid img:nth-child(2) { grid-column: span 4; margin-top: 40px; }
+.gallery-grid img:nth-child(3) { grid-column: span 3; }
+
+.gallery-grid img:nth-child(4) { grid-column: span 4; }
+.gallery-grid img:nth-child(5) { grid-column: span 4; margin-top: -30px; }
+.gallery-grid img:nth-child(6) { grid-column: span 4; }
+
+/* mobile fix */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-grid img {
+    grid-column: auto !important;
+    margin-top: 0 !important;
+  }
+
+  .hero-collage {
+    margin: 30px auto 0;
+  }
 }
