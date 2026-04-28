@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking | Ravishing Beauté</title>
+  <meta name="description" content="Request an appointment with Ravishing Beauté.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Ravishing Beauté home">
+    <span class="brand-mark">RB</span>
+    <span><strong>Ravishing Beauté</strong><small>Hair artistry by Shawna</small></span>
+  </a>
+  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="services.html">Services / Pricing</a>
+    <a href="about.html">About Your Stylist</a>
+    <a href="booking.html">Booking</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contact.html">Contact</a>
+    <a href="policies.html">Policies</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="page-hero"><p class="eyebrow">Booking</p><h1>Request your appointment.</h1><p>Send your preferred service, date, time, and any style details. Your appointment is not secured until your request is approved and your deposit is received.</p></section>
+<section class="booking-grid">
+  <form class="booking-form" id="bookingForm">
+    <label>Name<input name="name" required placeholder="Your name"></label>
+    <label>Phone<input name="phone" required placeholder="Your phone number"></label>
+    <label>Service<select name="service" required><option value="">Select a service</option><option>Braids</option><option>Quick Weave</option><option>Sew-In</option><option>Ponytail</option><option>Other / Not Sure</option></select></label>
+    <label>Preferred Date<input name="date" type="date"></label>
+    <label>Preferred Time<input name="time" type="time"></label>
+    <label>Style Details<textarea name="details" rows="5" placeholder="Length, color, inspo, add-ons, questions"></textarea></label>
+    <button class="btn primary" type="submit">Send Booking Request</button>
+  </form>
+  <aside class="booking-card">
+    <h2>Before you book</h2>
+    <ul>
+      <li>$25 deposit required.</li>
+      <li>Hours: 8:30 AM to 6:00 PM by appointment.</li>
+      <li>Closed Sunday and Monday.</li>
+      <li>Same-day bookings only if approved.</li>
+      <li>Please come detangled to stay on schedule.</li>
+      <li>Natural braiding hair colors included only for 1, 1B, 2, and 4.</li>
+    </ul>
+  </aside>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div>
+    <h2>Ravishing Beauté</h2>
+    <p>Clean parts, polished installs, and refined styling by appointment.</p>
+  </div>
+  <div class="footer-links">
+    <a href="services.html">Services</a>
+    <a href="booking.html">Book Now</a>
+    <a href="policies.html">Policies</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
