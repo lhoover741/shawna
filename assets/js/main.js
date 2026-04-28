@@ -1,34 +1,16 @@
+const navToggle=document.querySelector(".nav-toggle");const nav=document.querySelector(".site-nav");if(navToggle&&nav){navToggle.addEventListener("click",()=>{const open=nav.classList.toggle("open");navToggle.setAttribute("aria-expanded",open?"true":"false")})}
 
-const toggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('.site-nav');
-if (toggle && nav) {
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-}
-function encodeMessage(fields){
-  return Object.entries(fields).filter(([,v])=>v).map(([k,v])=>`${k}: ${v}`).join('\n');
-}
-const booking = document.querySelector('#bookingForm');
-if (booking) {
-  booking.addEventListener('submit', e => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(booking).entries());
-    const msg = encodeMessage({
-      Name:data.name, Phone:data.phone, Service:data.service,
-      "Preferred date":data.date, "Preferred time":data.time,
-      Details:data.details
-    });
-    window.location.href = `sms:?&body=${encodeURIComponent('Ravishing Beauté booking request\n\n' + msg)}`;
-  });
-}
-const question = document.querySelector('#questionForm');
-if (question) {
-  question.addEventListener('submit', e => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(question).entries());
-    const msg = encodeMessage({Name:data.name, Question:data.message});
-    window.location.href = `sms:?&body=${encodeURIComponent('Ravishing Beauté question\n\n' + msg)}`;
-  });
-}
+async function postJSON(url,data){const res=await fetch(url,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(data)});const json=await res.json().catch(()=>({}));if(!res.ok)throw new Error(json.error||"Request failed");return json}
+
+const bookingForm=document.querySelector("#bookingForm");if(bookingForm){bookingForm.addEventListener("submit",async e=>{e.preventDefault();const status=document.querySelector("#bookingStatus");status.textContent="Sending booking request...";const data=Object.fromEntries(new FormData(bookingForm).entries());try{await postJSON("/api/bookings",data);status.textContent="Request received. Shawna will review and follow up.";bookingForm.reset()}catch(err){status.textContent=err.message}})}
+
+const contactForm=document.querySelector("#contactForm");if(contactForm){contactForm.addEventListener("submit",async e=>{e.preventDefault();const status=document.querySelector("#contactStatus");status.textContent="Sending message...";const data=Object.fromEntries(new FormData(contactForm).entries());try{await postJSON("/api/contact",data);status.textContent="Message received. We will follow up soon.";contactForm.reset()}catch(err){status.textContent=err.message}})}
+
+async function loadReviews(){const wrap=document.querySelector("#reviewsFeed");if(!wrap)return;try{const res=await fetch("/api/reviews");const data=await res.json();wrap.innerHTML=(data.reviews||[]).map(r=>`<article class="review-card"><h3>${escapeHTML(r.name)}</h3><p>${escapeHTML(r.review)}</p><strong>${"★".repeat(Number(r.rating||5))}</strong></article>`).join("")||"<p>No approved reviews yet.</p>"}catch(e){wrap.innerHTML="<p>Reviews are currently unavailable.</p>"}}
+loadReviews();
+
+const adminLogin=document.querySelector("#adminLogin");if(adminLogin){adminLogin.addEventListener("submit",async e=>{e.preventDefault();const password=new FormData(adminLogin).get("password");localStorage.setItem("rb_admin_password",password);await loadAdminBookings();})}
+async function loadAdminBookings(){const table=document.querySelector("#bookingRows");if(!table)return;const password=localStorage.getItem("rb_admin_password")||"";try{const res=await fetch("/api/admin/bookings",{headers:{"x-admin-password":password}});const data=await res.json();if(!res.ok)throw new Error(data.error||"Admin login failed");document.querySelector("#adminPanel").classList.remove("hidden");table.innerHTML=(data.bookings||[]).map(b=>`<tr><td>${escapeHTML(b.created_at||"")}</td><td>${escapeHTML(b.name)}<br>${escapeHTML(b.phone)}<br>${escapeHTML(b.email||"")}</td><td>${escapeHTML(b.service)}<br>${escapeHTML(b.preferred_date||"")} ${escapeHTML(b.preferred_time||"")}</td><td>${escapeHTML(b.notes||"")}</td></tr>`).join("")}catch(err){document.querySelector("#adminStatus").textContent=err.message}}
+loadAdminBookings();
+
+function escapeHTML(value){return String(value??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}

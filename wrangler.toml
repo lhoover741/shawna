@@ -1,0 +1,7 @@
+name = "ravishing-beaute"
+compatibility_date = "2026-04-27"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ravishing-beaute-db"
+database_id = "replace-with-your-d1-database-id"

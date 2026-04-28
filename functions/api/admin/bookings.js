@@ -1,0 +1,8 @@
+export async function onRequestGet({ request, env }) {
+  const password = request.headers.get("x-admin-password") || "";
+  if (!env.ADMIN_PASSWORD || password !== env.ADMIN_PASSWORD) return json({ error: "Invalid admin password." }, 401);
+  if (!env.DB) return json({ error: "Database is not connected." }, 500);
+  const { results } = await env.DB.prepare(`SELECT * FROM bookings ORDER BY created_at DESC LIMIT 100`).all();
+  return json({ bookings: results || [] });
+}
+function json(body, status = 200){ return new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json" } }); }
