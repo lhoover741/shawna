@@ -1,0 +1,119 @@
+/* Premium Ravishing Beauté gallery layer */
+.gallery-grid {
+  align-items: stretch;
+}
+
+.gallery-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+  background: #fff;
+  min-height: 360px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  border-radius: inherit;
+  box-shadow: none;
+  transition: transform .45s ease, filter .45s ease;
+}
+
+.gallery-item::after {
+  content: "View";
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  color: var(--deep);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: .25s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.05) contrast(1.03);
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-grid .gallery-item:nth-child(1){grid-column:span 5;min-height:520px;}
+.gallery-grid .gallery-item:nth-child(2){grid-column:span 4;min-height:450px;margin-top:48px;}
+.gallery-grid .gallery-item:nth-child(3){grid-column:span 3;min-height:500px;}
+.gallery-grid .gallery-item:nth-child(4){grid-column:span 4;min-height:410px;}
+.gallery-grid .gallery-item:nth-child(5){grid-column:span 4;min-height:520px;margin-top:-40px;}
+.gallery-grid .gallery-item:nth-child(6){grid-column:span 4;min-height:440px;}
+.gallery-grid .gallery-item:nth-child(7){grid-column:span 6;min-height:480px;}
+.gallery-grid .gallery-item:nth-child(8){grid-column:span 6;min-height:480px;margin-top:36px;}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  place-items: center;
+  padding: 24px;
+  background: rgba(12, 6, 5, .86);
+  backdrop-filter: blur(12px);
+}
+
+.gallery-lightbox.open {
+  display: grid;
+}
+
+.gallery-lightbox img {
+  max-width: min(94vw, 980px);
+  max-height: 86vh;
+  border-radius: 24px;
+  box-shadow: 0 30px 90px rgba(0,0,0,.45);
+  background: #fff;
+}
+
+.gallery-lightbox button {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--deep);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media(max-width:900px){
+  .gallery-grid .gallery-item,
+  .gallery-grid .gallery-item:nth-child(n){
+    grid-column:auto;
+    min-height:390px;
+    margin-top:0;
+  }
+}
+
+@media(max-width:560px){
+  .gallery-item,
+  .gallery-grid .gallery-item:nth-child(n){
+    min-height:auto;
+    aspect-ratio:4/5;
+  }
+  .gallery-item::after{opacity:1;transform:none;}
+  .gallery-lightbox{padding:14px;}
+  .gallery-lightbox img{max-width:96vw;max-height:82vh;border-radius:18px;}
+}
