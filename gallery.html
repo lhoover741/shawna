@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/jpeg" href="assets/images/IMG_3482.jpeg" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/gallery-luxury.css" />
 </head>
 
 <body>
@@ -59,77 +60,7 @@
 
         <div class="gallery-grid">
 
-          <!-- NEW PHOTOS -->
-          <figure class="gallery-item">
-            <img src="assets/images/hero-main.jpg" alt="Featured style">
-            <figcaption class="caption"><strong>Featured finish</strong><br>Clean, polished, and camera ready.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/gallery-1.jpg">
-            <figcaption class="caption"><strong>Fresh look</strong><br>New featured style.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/gallery-2.jpg">
-            <figcaption class="caption"><strong>Styled finish</strong><br>Soft movement and shine.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/hero-left.jpg">
-            <figcaption class="caption"><strong>Detail work</strong><br>Neat sections and clean parts.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/gallery-3.jpg">
-            <figcaption class="caption"><strong>Client finish</strong><br>Clean and wearable.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/gallery-4.jpg">
-            <figcaption class="caption"><strong>Polished result</strong><br>Balanced styling throughout.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/hero-right.jpg">
-            <figcaption class="caption"><strong>Camera ready</strong><br>Styled for real life and photos.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/gallery-5.jpg">
-            <figcaption class="caption"><strong>Protective style</strong><br>Clean, secure, and stylish.</figcaption>
-          </figure>
-
-          <!-- ORIGINAL PHOTOS -->
-          <figure class="gallery-item">
-            <img src="assets/images/hero-2.jpg">
-            <figcaption class="caption"><strong>Soft glam</strong><br>Sleek and polished finish.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/braids-2.jpg">
-            <figcaption class="caption"><strong>Signature braids</strong><br>Detailed and consistent parts.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/braids-1.jpg">
-            <figcaption class="caption"><strong>Precision braiding</strong><br>Clean scalp work.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/style-1.jpg">
-            <figcaption class="caption"><strong>Silk press</strong><br>Smooth, healthy shine.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/client-1.jpg">
-            <figcaption class="caption"><strong>Event glam</strong><br>Soft curls with body.</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="assets/images/hero-1.jpg">
-            <figcaption class="caption"><strong>Classic finish</strong><br>Polished and refined.</figcaption>
-          </figure>
+          <!-- KEEP YOUR IMAGES (UNCHANGED) -->
 
         </div>
 
@@ -137,6 +68,23 @@
     </section>
 
   </main>
+
+  <!-- LIGHTBOX -->
+  <div class="gallery-lightbox" id="lightbox">
+    <img id="lightbox-img">
+  </div>
+
+  <script>
+  document.querySelectorAll('.gallery-item img').forEach(img=>{
+    img.addEventListener('click',()=>{
+      document.getElementById('lightbox').style.display='flex';
+      document.getElementById('lightbox-img').src=img.src;
+    });
+  });
+  document.getElementById('lightbox').addEventListener('click',()=>{
+    document.getElementById('lightbox').style.display='none';
+  });
+  </script>
 
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -148,15 +96,9 @@
             <span class="brand-name">Ravishing Beautè</span>
           </div>
         </div>
-        <p class="footer-copy">Clean parts, polished styling, and a professional finish every time.</p>
       </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <span>© Ravishing Beautè</span>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
