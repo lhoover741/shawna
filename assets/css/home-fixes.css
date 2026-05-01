@@ -1,0 +1,143 @@
+/* Final homepage tightening for Ravishing Beaute - background unchanged */
+
+.hero-copy-shell{
+  max-width:620px;
+}
+
+.hero-copy-shell h1{
+  max-width:10.5ch;
+}
+
+.hero-copy-shell p{
+  max-width:58ch;
+}
+
+.hero-mosaic{
+  display:grid;
+  grid-template-columns:1fr .78fr;
+  grid-template-rows:1fr 1fr;
+  gap:12px;
+  align-items:stretch;
+}
+
+.hero-mosaic-main{
+  grid-row:1 / span 2;
+}
+
+.hero-mosaic-main,
+.hero-mosaic-top,
+.hero-mosaic-bottom{
+  overflow:hidden;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:var(--shadow);
+}
+
+.hero-mosaic img{
+  width:100%;
+  height:100%;
+  min-height:0;
+  object-fit:cover;
+  border-radius:0;
+  transition:transform .35s ease, filter .35s ease;
+}
+
+.hero-mosaic img:hover{
+  transform:scale(1.03);
+  filter:saturate(1.05) contrast(1.03);
+}
+
+.hero-mosaic-main img{
+  object-position:center center;
+}
+
+.hero-mosaic-top img,
+.hero-mosaic-bottom img{
+  object-position:center center;
+}
+
+.luxe-info-row{
+  gap:.9rem;
+}
+
+.luxe-mini-card{
+  padding:1rem;
+  border-radius:16px;
+}
+
+.luxe-mini-card strong{
+  font-size:.95rem;
+  margin-bottom:.25rem;
+}
+
+.luxe-mini-card span{
+  font-size:.84rem;
+  line-height:1.55;
+  opacity:.82;
+}
+
+.hero-floating-panel{
+  border:1px solid rgba(49,214,214,.28);
+  background:rgba(7,16,19,.82);
+  backdrop-filter:blur(12px);
+}
+
+.hero-floating-panel strong{
+  display:block;
+  font-size:1rem;
+  line-height:1.35;
+  margin:.45rem 0;
+}
+
+.hero-floating-panel p{
+  margin:.35rem 0 0;
+  font-size:.94rem;
+  line-height:1.55;
+}
+
+.featured-strip-card,
+.service-preview-card,
+.showcase-card,
+.showcase-feature-card,
+.notice,
+.quote-card{
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.featured-strip-card:hover,
+.service-preview-card:hover,
+.showcase-card:hover,
+.showcase-feature-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(49,214,214,.32);
+  box-shadow:0 22px 58px rgba(0,0,0,.32);
+}
+
+@media(max-width:1024px){
+  .hero-copy-shell,
+  .hero-copy-shell p{
+    max-width:100%;
+  }
+
+  .hero-copy-shell h1{
+    max-width:12ch;
+  }
+}
+
+@media(max-width:760px){
+  .hero-mosaic{
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+  }
+
+  .hero-mosaic-main,
+  .hero-mosaic-top,
+  .hero-mosaic-bottom{
+    grid-row:auto;
+    min-height:260px;
+  }
+
+  .luxe-info-row{
+    grid-template-columns:1fr;
+  }
+}
