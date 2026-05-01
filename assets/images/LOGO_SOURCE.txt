@@ -1,0 +1,15 @@
+Ravishing Beaute active logo asset:
+
+Use this file for header, footer, and favicon logo references:
+assets/images/IMG_3482.jpeg
+
+Preferred logo display:
+- small
+- rounded / circular
+- object-fit: cover
+
+Legacy logo paths may exist on older pages until fully cleaned:
+- assets/images/logo.jpeg
+- assets/images/logo.svg
+
+Do not use the legacy paths for new edits.
