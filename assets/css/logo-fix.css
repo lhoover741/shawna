@@ -1,0 +1,8 @@
+/* Global logo path fix for pages still referencing logo.jpeg */
+.brand img[src$="logo.jpeg"],
+.site-header img[src$="logo.jpeg"],
+.site-footer img[src$="logo.jpeg"] {
+  content: url('../images/logo.svg');
+  object-fit: contain;
+  background: #020707;
+}
