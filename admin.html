@@ -1,7 +1,152 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Admin | Ravishing Beauté</title><meta name="description" content="Premium hair styling by Ravishing Beauté."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/style.css"></head><body><header class="site-header">
-  <a class="brand" href="index.html"><span class="brand-mark">RB</span><span><strong>Ravishing Beauté</strong><small>Hair artistry by Shawna</small></span></a>
-  <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-  <nav class="site-nav">
-    <a href="index.html">Home</a><a href="gallery.html">Gallery</a><a href="services.html">Services / Pricing</a><a href="about.html">About Your Stylist</a><a href="booking.html">Booking</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a><a href="policies.html">Policies</a>
-  </nav>
-</header><main><section class="page-hero"><p class="eyebrow">Admin</p><h1>Booking Dashboard</h1><p>Private view for Ravishing Beauté booking requests.</p></section><section class="section"><div class="admin-card"><form id="adminLogin"><label>Admin Password<input name="password" type="password" required></label><button class="btn primary" type="submit" style="margin-top:12px">Open Dashboard</button><p id="adminStatus" class="status"></p></form></div><div id="adminPanel" class="admin-card hidden" style="margin-top:18px"><h2>Booking Requests</h2><table class="admin-table"><thead><tr><th>Received</th><th>Client</th><th>Service / Time</th><th>Notes</th></tr></thead><tbody id="bookingRows"></tbody></table></div></section></main><footer class="footer"><div><h2>Ravishing Beauté</h2><p>Clean parts, polished installs, and refined styling by appointment.</p></div><div class="footer-links"><a href="services.html">Services</a><a href="booking.html">Book Now</a><a href="policies.html">Policies</a><a href="contact.html">Contact</a></div></footer><script src="assets/js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Dashboard | Ravishing Beautè</title>
+  <meta name="description" content="Ravishing Beautè booking request dashboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/jpeg" href="assets/images/IMG_3482.jpeg" />
+  <link rel="apple-touch-icon" href="assets/images/IMG_3482.jpeg" />
+  <link rel="shortcut icon" href="assets/images/IMG_3482.jpeg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Ravishing Beautè home">
+        <img src="assets/images/IMG_3482.jpeg" alt="Ravishing Beautè logo" />
+        <div class="brand-text">
+          <span class="brand-kicker">Dashboard</span>
+          <span class="brand-name">Ravishing Beautè</span>
+        </div>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <nav class="site-nav" aria-label="Dashboard navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a class="cta-link" href="index.html">Exit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell admin-page-shell">
+    <section class="page-hero">
+      <div class="container page-hero-shell">
+        <div>
+          <span class="eyebrow">Dashboard</span>
+          <h1>Booking Dashboard</h1>
+          <p>Review Ravishing Beautè booking requests, filter by status, approve appointment details, and save internal notes.</p>
+          <div class="tag-row">
+            <span class="tag">Requests</span>
+            <span class="tag">Approvals</span>
+            <span class="tag">Status updates</span>
+            <span class="tag">Internal notes</span>
+          </div>
+        </div>
+        <div class="page-hero-image">
+          <img src="assets/images/hero-main.jpg" alt="Ravishing Beautè featured style" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2 admin-access-grid">
+        <article class="contact-card admin-login-card">
+          <span class="eyebrow">Access</span>
+          <h2>Open dashboard</h2>
+          <p class="section-copy">Enter the dashboard access code to load current booking requests.</p>
+          <form data-admin-form class="admin-login-form">
+            <label>
+              Access code
+              <input data-admin-key-input type="text" name="adminKey" required placeholder="Enter access code" />
+            </label>
+            <div class="form-actions">
+              <button class="cta-link" type="submit">Open Dashboard</button>
+              <button class="cta-link outline" type="button" data-admin-logout>Clear Access</button>
+            </div>
+            <div class="form-status" data-admin-status role="status" aria-live="polite"></div>
+          </form>
+        </article>
+
+        <article class="contact-card admin-help-card">
+          <span class="eyebrow">Workflow</span>
+          <h3>How to manage requests</h3>
+          <ul class="check-list">
+            <li>Review new requests first.</li>
+            <li>Approve a final date and time before requesting a deposit.</li>
+            <li>Use same-day approval only when the appointment can be accepted.</li>
+            <li>Use internal notes for private follow-up details.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section data-admin-shell class="is-hidden">
+      <div class="container">
+        <div class="section-heading admin-section-heading">
+          <div>
+            <span class="eyebrow">Booking requests</span>
+            <h2>Manage appointments</h2>
+          </div>
+          <div class="admin-toolbar">
+            <label>
+              Filter
+              <select data-admin-filter>
+                <option value="all">All requests</option>
+                <option value="new">New</option>
+                <option value="same-day approval needed">Same-day approval needed</option>
+                <option value="reviewing">Reviewing</option>
+                <option value="approved">Approved</option>
+                <option value="deposit requested">Deposit requested</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="completed">Completed</option>
+                <option value="declined">Declined</option>
+              </select>
+            </label>
+            <button class="cta-link outline" type="button" data-admin-refresh>Refresh</button>
+            <button class="cta-link outline" type="button" data-admin-logout>Logout</button>
+          </div>
+        </div>
+        <div class="admin-summary-grid" data-admin-summary></div>
+        <div class="admin-booking-list" data-admin-list></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 1rem;">
+          <img src="assets/images/IMG_3482.jpeg" alt="Ravishing Beautè logo" />
+          <div class="brand-text">
+            <span class="brand-kicker">Dashboard</span>
+            <span class="brand-name">Ravishing Beautè</span>
+          </div>
+        </div>
+        <p class="footer-copy">Booking request management for Ravishing Beautè.</p>
+      </div>
+      <div>
+        <h3>Navigate</h3>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="booking.html">Booking</a>
+          <a href="services.html">Services</a>
+          <a href="policies.html">Policies</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year></span> Ravishing Beautè.</span>
+      <span>Dashboard view.</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
