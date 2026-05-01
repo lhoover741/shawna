@@ -1,8 +1,8 @@
-/* Global logo path fix for pages still referencing logo.jpeg */
-.brand img[src$="logo.jpeg"],
-.site-header img[src$="logo.jpeg"],
-.site-footer img[src$="logo.jpeg"] {
-  content: url('../images/logo.svg');
-  object-fit: contain;
+/* Global logo fix: use IMG_3482.jpeg for header and footer brand logos */
+.brand img,
+.site-header .brand img,
+.site-footer .brand img {
+  content: url('../images/IMG_3482.jpeg');
+  object-fit: cover;
   background: #020707;
 }
