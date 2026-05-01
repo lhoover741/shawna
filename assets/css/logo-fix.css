@@ -1,8 +1,9 @@
-/* Global logo fix: use IMG_3482.jpeg for header and footer brand logos */
+/* Final rounded brand logo fallback while legacy pages are cleaned */
 .brand img,
 .site-header .brand img,
 .site-footer .brand img {
   content: url('../images/IMG_3482.jpeg');
   object-fit: cover;
+  border-radius: 50%;
   background: #020707;
 }
