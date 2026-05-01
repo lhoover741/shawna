@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS bookings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  email TEXT NOT NULL,
+  preferred_date TEXT NOT NULL,
+  preferred_time TEXT NOT NULL,
+  service TEXT NOT NULL,
+  hair_included TEXT,
+  length_notes TEXT,
+  addons TEXT,
+  notes TEXT,
+  status TEXT NOT NULL DEFAULT 'new',
+  same_day_request INTEGER NOT NULL DEFAULT 0,
+  same_day_approved INTEGER NOT NULL DEFAULT 0,
+  approved_date TEXT,
+  approved_time TEXT,
+  admin_notes TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

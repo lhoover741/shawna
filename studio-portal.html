@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Portal | Ravishing Beautè</title>
+  <meta name="description" content="Private Ravishing Beautè booking dashboard." />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Ravishing Beautè home">
+        <img src="assets/images/logo.jpeg" alt="Ravishing Beautè logo" />
+        <div class="brand-text">
+          <span class="brand-kicker">Private access</span>
+          <span class="brand-name">Ravishing Beautè</span>
+        </div>
+      </a>
+      <div class="inline-actions admin-top-actions">
+        <a class="cta-link outline" href="booking.html">View booking page</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell admin-shell-page">
+    <section class="page-hero admin-hero">
+      <div class="container page-hero-shell admin-hero-shell">
+        <div>
+          <span class="eyebrow">Hidden admin page</span>
+          <h1>Manage booking requests privately.</h1>
+          <p>This page is not linked in the public site navigation. Enter your private admin key to load the latest appointment requests, approve same-day requests, assign final date and time details, and track deposits.</p>
+        </div>
+        <div class="page-hero-image admin-hero-card">
+          <div class="admin-hero-copy">
+            <strong>Suggested use</strong>
+            <p>Keep this link private and set a strong secret in Cloudflare called <code>ADMIN_KEY</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container admin-grid">
+        <article class="booking-form-card admin-login-card">
+          <div class="form-heading">
+            <span class="eyebrow">Access</span>
+            <h2>Unlock the booking dashboard</h2>
+            <p class="section-copy">Enter the same admin key you saved in Cloudflare Pages. This stays in your browser session only.</p>
+          </div>
+
+          <form class="booking-form admin-login-form" data-admin-form>
+            <label>
+              Admin key
+              <input type="password" name="adminKey" data-admin-key-input autocomplete="current-password" required />
+            </label>
+
+            <div class="form-actions">
+              <button class="cta-link submit-button" type="submit">Open dashboard</button>
+              <button class="cta-link outline" type="button" data-admin-logout>Clear access</button>
+            </div>
+
+            <div class="form-status" data-admin-status role="status" aria-live="polite"></div>
+          </form>
+        </article>
+
+        <aside class="booking-side-panel admin-help-panel">
+          <article class="contact-card">
+            <h3>What you can do here</h3>
+            <div class="tag-row">
+              <span class="tag">View requests</span>
+              <span class="tag">Track status</span>
+              <span class="tag">Approve same-day</span>
+              <span class="tag">Assign final times</span>
+            </div>
+          </article>
+
+          <article class="contact-card">
+            <h3>Privacy note</h3>
+            <p class="section-copy">This route is hidden, but the real protection comes from the secret admin key on the server side.</p>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="admin-dashboard-section is-hidden" data-admin-shell>
+      <div class="container">
+        <div class="section-heading admin-controls">
+          <div>
+            <span class="eyebrow">Dashboard</span>
+            <h2>Appointment requests</h2>
+          </div>
+          <div class="inline-actions admin-action-row">
+            <label class="admin-filter">
+              <span class="visually-hidden">Filter bookings</span>
+              <select data-admin-filter>
+                <option value="all">All statuses</option>
+                <option value="new">New</option>
+                <option value="same-day approval needed">Same-day approval needed</option>
+                <option value="reviewing">Reviewing</option>
+                <option value="approved">Approved</option>
+                <option value="deposit requested">Deposit requested</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="completed">Completed</option>
+                <option value="declined">Declined</option>
+              </select>
+            </label>
+            <button class="cta-link outline" type="button" data-admin-refresh>Refresh</button>
+          </div>
+        </div>
+
+        <div class="admin-summary-grid" data-admin-summary></div>
+        <div class="admin-bookings-grid" data-admin-list></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <span>© <span data-year></span> Ravishing Beautè. Private studio access.</span>
+      <span>This page is intentionally not linked in the main site navigation.</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
