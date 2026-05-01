@@ -22,60 +22,18 @@ const engagementTrackingSnippet = `
     window.gtag('event', eventName, Object.assign({ event_category: 'engagement' }, params || {}));
   }
 
-  function normalizeText(value){
-    return String(value || '').replace(/\s+/g, ' ').trim();
-  }
-
-  function eventForLink(link){
-    const href = (link.getAttribute('href') || '').toLowerCase();
-    const text = normalizeText(link.textContent).toLowerCase();
-    const classes = link.className || '';
-
-    if (href.includes('booking') || text.includes('book') || text.includes('appointment') || classes.includes('cta-link')) {
-      return 'book_now_click';
-    }
-    if (href.includes('contact') || text.includes('contact') || text.includes('question')) {
-      return 'contact_click';
-    }
-    if (href.startsWith('sms:')) {
-      return href.includes('booking') ? 'booking_sms_click' : 'text_click';
-    }
-    if (href.startsWith('tel:')) {
-      return 'call_click';
-    }
-    if (href.includes('gallery') || text.includes('gallery') || text.includes('work')) {
-      return 'gallery_click';
-    }
-    if (href.includes('services') || text.includes('pricing') || text.includes('services')) {
-      return 'services_click';
-    }
-    return 'nav_click';
-  }
-
   document.addEventListener('click', function(event){
     const link = event.target.closest && event.target.closest('a[href]');
     if (!link) return;
 
-    const eventName = link.dataset.track || eventForLink(link);
-    sendEvent(eventName, {
-      event_label: link.dataset.label || normalizeText(link.textContent) || link.getAttribute('aria-label') || link.getAttribute('href'),
-      link_url: link.getAttribute('href') || '',
-      page_path: window.location.pathname
-    });
-  }, true);
+    const href = (link.getAttribute('href') || '').toLowerCase();
+    let eventName = 'nav_click';
 
-  document.addEventListener('submit', function(event){
-    const form = event.target;
-    if (!form || !form.matches || !form.matches('form')) return;
-
-    const formLabel = form.dataset.label || form.getAttribute('aria-label') || form.id || 'Form submit';
-    const action = (form.getAttribute('action') || '').toLowerCase();
-    const page = window.location.pathname.toLowerCase();
-    const eventName = form.dataset.track || (page.includes('booking') || action.includes('booking') ? 'booking_form_submit' : 'contact_form_submit');
+    if (href.includes('booking')) eventName = 'book_now_click';
+    if (href.includes('contact')) eventName = 'contact_click';
 
     sendEvent(eventName, {
-      event_label: formLabel,
-      form_action: form.getAttribute('action') || '',
+      event_label: link.textContent.trim(),
       page_path: window.location.pathname
     });
   }, true);
@@ -87,21 +45,23 @@ export async function onRequest(context) {
   const response = await context.next();
   const contentType = response.headers.get('content-type') || '';
 
-  if (!contentType.includes('text/html')) {
-    return response;
-  }
+  if (!contentType.includes('text/html')) return response;
 
   let html = await response.text();
 
-  if (!html.includes(`gtag/js?id=${GA_ID}`)) {
+  // Fix brand spelling globally
+  html = html.replaceAll('Beautè', 'Beauté');
+
+  // Inject GA
+  if (!html.includes('gtag/js?id=')) {
     html = html.replace('</head>', `${gaHeadSnippet}</head>`);
   }
 
-  if (!html.includes('booking_form_submit') && !html.includes('book_now_click')) {
-    html = html.replace('</body>', `${engagementTrackingSnippet}</body>`);
-  } else if (!html.includes('booking_form_submit')) {
-    html = html.replace('</body>', `${engagementTrackingSnippet}</body>`);
-  }
+  // Inject tracking
+  html = html.replace('</body>', `${engagementTrackingSnippet}</body>`);
+
+  // Remove dev-style footer text
+  html = html.replace('Designed for mobile, desktop, and easy GitHub deployment.', 'Professional styling by appointment.');
 
   const headers = new Headers(response.headers);
   headers.set('content-type', 'text/html; charset=utf-8');
