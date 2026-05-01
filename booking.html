@@ -1,26 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Booking | Ravishing Beauté</title>
-<link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking | Ravishing Beauté</title>
+  <meta name="description" content="Book your Ravishing Beauté appointment directly through the site with a cleaner, guided booking flow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-<main class="page-shell booking-page-shell">
-<section class="page-hero booking-page-hero">
-<div class="container page-hero-shell booking-hero-grid">
-<div>
-<span class="eyebrow">Booking</span>
-<h1>Request your appointment in minutes.</h1>
-<p>Choose your service, request your date and time, and receive approval with deposit instructions. Same-day requests are accepted only if approved.</p>
-<div class="hero-actions">
-<a class="cta-link" href="#booking-form">Start booking</a>
-<a class="cta-link outline" href="services.html">View prices</a>
-</div>
-</div>
-</div>
-</section>
-</main>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Ravishing Beauté home">
+        <img src="assets/images/logo.jpeg" alt="Ravishing Beauté logo" />
+        <div class="brand-text">
+          <span class="brand-kicker">Northwest Indiana</span>
+          <span class="brand-name">Ravishing Beauté</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a class="" href="index.html">Home</a></li>
+          <li><a class="" href="about.html">About</a></li>
+          <li><a class="" href="services.html">Services</a></li>
+          <li><a class="" href="gallery.html">Gallery</a></li>
+          <li><a class="active" href="booking.html">Booking</a></li>
+          <li><a class="" href="contact.html">Contact</a></li>
+          <li><a class="" href="policies.html">Policies</a></li>
+          <li><a class="cta-link" href="booking.html">Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell booking-page-shell">
+    <section class="page-hero booking-page-hero">
+      <div class="container page-hero-shell booking-hero-grid">
+        <div>
+          <span class="eyebrow">Booking</span>
+          <h1>Request your appointment in minutes.</h1>
+          <p>Choose your service, request your date and time, and receive approval with deposit instructions. Same-day requests are accepted only if approved.</p>
+          <div class="hero-actions">
+            <a class="cta-link" href="#booking-form">Start booking</a>
+            <a class="cta-link outline" href="services.html">View prices</a>
+          </div>
+        </div>
+        <div class="page-hero-image booking-hero-image">
+          <img src="assets/images/montage.jpg" alt="Ravishing Beauté braid styles" />
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-process-section">
+      <div class="container booking-process-grid">
+        <article class="booking-process-card">
+          <span class="featured-label">Step 1</span>
+          <h3>Pick your style</h3>
+          <p>Use the grouped service menu so it is easier to find knotless braids, stitch braids, ponytails, quickweaves, and sew-ins.</p>
+        </article>
+        <article class="booking-process-card">
+          <span class="featured-label">Step 2</span>
+          <h3>Add your details</h3>
+          <p>Choose a date that falls Tuesday through Saturday, request a start time during business hours, then add your hair details and any matching add-ons.</p>
+        </article>
+        <article class="booking-process-card">
+          <span class="featured-label">Step 3</span>
+          <h3>Wait for approval</h3>
+          <p>Your request is reviewed before it is confirmed. A $25 nonrefundable deposit is due only after we approve the appointment, and same-day requests stay pending until approved in the admin dashboard.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container booking-layout booking-layout-upgraded">
+        <article class="booking-form-card booking-form-card-upgraded" id="booking-form">
+          <div class="form-heading">
+            <span class="eyebrow">Appointment request</span>
+            <h2>Request your appointment</h2>
+            <p class="section-copy">Fill out each section below. This is a request, not an instant confirmation. Business hours are 8:30 AM to 6:00 PM by appointment, we are closed Sunday and Monday, and same-day requests must be approved before they can be confirmed.</p>
+          </div>
+
+          <div class="booking-success-card" data-booking-success hidden>
+            <span class="featured-label">Request received</span>
+            <h3>Your request was submitted successfully.</h3>
+            <p data-booking-success-message>We will review your request and follow up with approval and deposit instructions.</p>
+            <div class="booking-success-meta">
+              <span>Booking ID</span>
+              <strong data-booking-id>Pending</strong>
+            </div>
+            <div class="hero-actions booking-success-actions">
+              <button class="cta-link outline" type="button" data-booking-reset>Submit another request</button>
+              <a class="cta-link" href="gallery.html">View gallery</a>
+            </div>
+          </div>
+
+          <form class="booking-form booking-form-upgraded" data-booking-form novalidate>
+            <section class="booking-section-block">
+              <div class="booking-section-head">
+                <span class="featured-label">Section 1</span>
+                <h3>Your contact details</h3>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Full name
+                  <input type="text" name="name" autocomplete="name" required />
+                </label>
+
+                <label>
+                  Phone number
+                  <input type="tel" name="phone" autocomplete="tel" required />
+                </label>
+
+                <label class="full-width-field">
+                  Email address
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+              </div>
+            </section>
+
+            <section class="booking-section-block">
+              <div class="booking-section-head">
+                <span class="featured-label">Section 2</span>
+                <h3>Appointment details</h3>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Preferred date
+                  <input type="date" name="preferredDate" required />
+                  <small class="field-hint" data-date-guidance>We book Tuesday through Saturday only.</small>
+                </label>
+
+                <label>
+                  Preferred start time
+                  <input type="time" name="preferredTime" min="08:30" max="18:00" step="900" required />
+                  <small class="field-hint">Request a start time between 8:30 AM and 6:00 PM.</small>
+                </label>
+              </div>
+              <div class="booking-schedule-note" data-same-day-note>
+                Same-day bookings are allowed only if approved.
+              </div>
+            </section>
+
+            <section class="booking-section-block">
+              <div class="booking-section-head">
+                <span class="featured-label">Section 3</span>
+                <h3>Style details</h3>
+              </div>
+              <div class="form-grid">
+                <label class="full-width-field">
+                  Service
+                  <select name="service" data-service-select required>
+                    <option value="">Select a service</option>
+                    <optgroup label="Knotless braids">
+                      <option data-price="$375" data-hair="Hair included in natural colors" value="Knotless - Small">Small knotless</option>
+                      <option data-price="$220" data-hair="Hair included in natural colors" value="Knotless - Medium">Medium knotless</option>
+                      <option data-price="$150" data-hair="Hair included in natural colors" value="Knotless - Large">Large knotless</option>
+                    </optgroup>
+                    <optgroup label="Stitch braids">
+                      <option data-price="$75" data-hair="Natural style" value="Stitch Braids - 2 Braids">2 braids</option>
+                      <option data-price="$145" data-hair="Hair may be added based on look" value="Stitch Braids - 6 Feed-Ins">6 feed-ins</option>
+                      <option data-price="$165" data-hair="Hair may be added based on look" value="Stitch Braids - 8 Feed-Ins">8 feed-ins</option>
+                      <option data-price="$185" data-hair="Hair may be added based on look" value="Stitch Braids - 10-14 Feed-Ins">10-14 feed-ins</option>
+                      <option data-price="$225" data-hair="Hair may be added based on look" value="Stitch Braids - 14-20+ Feed-Ins">14-20+ feed-ins</option>
+                    </optgroup>
+                    <optgroup label="Braided styles">
+                      <option data-price="$225" data-hair="Hair included in natural colors" value="Braided Ponytail">Braided ponytail</option>
+                      <option data-price="$225" data-hair="Hair included in natural colors" value="Lemonade Braids">Lemonade braids</option>
+                      <option data-price="$300" data-hair="Hair included in natural colors" value="Fulani Braids">Fulani braids</option>
+                      <option data-price="$140" data-hair="Varies by style" value="Ponytail">Ponytail</option>
+                    </optgroup>
+                    <optgroup label="Quickweaves">
+                      <option data-price="$125" data-hair="Client provides hair" value="Quickweave">Quickweave</option>
+                      <option data-price="$150" data-hair="Client provides hair" value="Quickweave - Half Up / Half Down">Half up / half down quickweave</option>
+                      <option data-price="$175" data-hair="Blend of braid and weave" value="Half Freestyle Braids / Half Quick Weave">Half freestyle braids / half quick weave</option>
+                    </optgroup>
+                    <optgroup label="Sew-ins">
+                      <option data-price="$150" data-hair="Client provides hair" value="Sew-In">Sew-in</option>
+                      <option data-price="$165" data-hair="Client provides hair" value="Sew-In - Half Up / Half Down">Half up / half down sew-in</option>
+                    </optgroup>
+                  </select>
+                </label>
+
+                <label data-hair-field>
+                  Hair option
+                  <select name="hairIncluded" data-hair-select>
+                    <option value="">Select one</option>
+                    <option>Use included hair - color 1</option>
+                    <option>Use included hair - color 1B</option>
+                    <option>Use included hair - color 2</option>
+                    <option>Use included hair - color 4</option>
+                    <option>I will bring my own hair</option>
+                    <option>Not applicable for this style</option>
+                  </select>
+                </label>
+
+                <label>
+                  Length or size notes
+                  <input type="text" name="lengthNotes" placeholder="Example: waist length, medium parts" />
+                </label>
+              </div>
+
+              <div class="booking-hair-guidance" data-hair-guidance>
+                Hair is included for braiding styles in natural colors 1, 1B, 2, and 4 only.
+              </div>
+            </section>
+
+            <section class="booking-section-block">
+              <div class="booking-section-head">
+                <span class="featured-label">Section 4</span>
+                <h3>Add-ons and notes</h3>
+              </div>
+
+              <fieldset data-addon-fieldset>
+                <legend>Select any add-ons</legend>
+                <div class="checkbox-grid checkbox-grid-upgraded">
+                  <label class="check-option" data-addon-key="boho"><input type="checkbox" name="addons" value="Boho braids or human hair" /> <span>Boho braids or human hair</span></label>
+                  <label class="check-option" data-addon-key="length"><input type="checkbox" name="addons" value="Past waist length" /> <span>Past waist length</span></label>
+                  <label class="check-option" data-addon-key="crimps"><input type="checkbox" name="addons" value="Crimps" /> <span>Crimps</span></label>
+                  <label class="check-option" data-addon-key="sewin-takedown"><input type="checkbox" name="addons" value="Sew-in take down" /> <span>Sew-in take down</span></label>
+                  <label class="check-option" data-addon-key="natural-no-weave"><input type="checkbox" name="addons" value="Natural style with no weave added" /> <span>Natural style with no weave added</span></label>
+                </div>
+              </fieldset>
+
+              <label>
+                Inspiration or extra details
+                <textarea name="notes" rows="6" placeholder="Share braid color, parting preferences, inspiration details, or anything important before approval."></textarea>
+              </label>
+            </section>
+
+            <section class="booking-section-block booking-policy-block">
+              <div class="booking-section-head">
+                <span class="featured-label">Section 5</span>
+                <h3>Booking agreement</h3>
+              </div>
+
+              <div class="policy-check-grid">
+                <label class="consent-row consent-row-upgraded">
+                  <input type="checkbox" data-policy-check required />
+                  <span>I understand this form is a request only and my appointment is not confirmed until approved.</span>
+                </label>
+                <label class="consent-row consent-row-upgraded">
+                  <input type="checkbox" data-policy-check required />
+                  <span>I understand a $25 nonrefundable deposit is due after approval to secure my appointment.</span>
+                </label>
+                <label class="consent-row consent-row-upgraded">
+                  <input type="checkbox" data-policy-check required />
+                  <span>I understand I should arrive detangled and review the full salon policies before my appointment.</span>
+                </label>
+              </div>
+            </section>
+
+            <label class="hidden-honeypot" aria-hidden="true">
+              Leave this field blank
+              <input type="text" name="website" tabindex="-1" autocomplete="off" />
+            </label>
+
+            <div class="form-actions form-actions-stacked">
+              <button class="cta-link submit-button" type="submit">Submit booking request</button>
+              <a class="cta-link outline" href="policies.html">Review policies</a>
+            </div>
+
+            <div class="form-status" data-booking-status role="status" aria-live="polite"></div>
+          </form>
+        </article>
+
+        <aside class="booking-side-panel booking-side-panel-upgraded">
+          <article class="contact-card booking-summary-card booking-summary-card-live">
+            <span class="featured-label">Live summary</span>
+            <h3>Request preview</h3>
+            <div class="booking-summary-list">
+              <div><span>Selected service</span><strong data-summary-service>Not selected</strong></div>
+              <div><span>Starting price</span><strong data-summary-price>Choose a style</strong></div>
+              <div><span>Preferred date</span><strong data-summary-date>Not selected</strong></div>
+              <div><span>Preferred time</span><strong data-summary-time>Not selected</strong></div>
+              <div><span>Hair option</span><strong data-summary-hair>Choose after selecting a service</strong></div>
+              <div><span>Add-ons</span><strong data-summary-addons>None selected</strong></div>
+            </div>
+          </article>
+
+          <article class="contact-card booking-summary-card deposit-card-upgraded">
+            <span class="featured-label">Deposit</span>
+            <h3>$25 nonrefundable deposit</h3>
+            <p class="section-copy">Deposit instructions are sent only after your request is reviewed and approved. Do not send a deposit until we follow up.</p>
+            <ul class="check-list booking-deposit-list">
+              <li>Review request</li><li>Approval sent</li><li>Deposit paid</li><li>Appointment confirmed</li>
+            </ul>
+          </article>
+
+          <article class="contact-card booking-summary-card schedule-card-upgraded">
+            <span class="featured-label">Scheduling</span>
+            <h3>Hours and approval rules</h3>
+            <ul class="check-list booking-deposit-list">
+              <li>Hours: 8:30 AM to 6:00 PM</li><li>Closed Sunday and Monday</li><li>Same-day allowed only if approved</li><li>Admin can assign a final approved date and time</li>
+            </ul>
+          </article>
+
+          <article class="contact-card booking-summary-card">
+            <span class="featured-label">Need help first?</span>
+            <h3>Not sure what to book?</h3>
+            <p class="section-copy">Use the contact page before submitting if you need help choosing the best style, size, or service.</p>
+            <a class="cta-link outline" href="contact.html">Go to Contact</a>
+          </article>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 1rem;">
+          <img src="assets/images/logo.jpeg" alt="Ravishing Beauté logo" />
+          <div class="brand-text"><span class="brand-kicker">Luxury beauty services</span><span class="brand-name">Ravishing Beauté</span></div>
+        </div>
+        <p class="footer-copy">Professional styling with a polished, welcoming experience. We specialize in clean parts, detailed finishes, and styles that leave a lasting impression.</p>
+      </div>
+      <div><h3>Navigate</h3><div class="footer-links"><a href="about.html">About Your Stylist</a><a href="services.html">Services & Pricing</a><a href="gallery.html">Gallery</a><a href="reviews.html">Reviews</a><a href="booking.html">Booking</a></div></div>
+      <div><h3>Connect</h3><div class="footer-links"><a href="https://www.instagram.com/ravishingbeaute_/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.facebook.com/watch/61551444388513/" target="_blank" rel="noreferrer">Facebook</a><a href="contact.html">Contact Page</a></div></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span data-year></span> Ravishing Beauté. All rights reserved.</span><span>Professional styling by appointment.</span></div>
+  </footer>
+
+  <a class="mobile-book-bar" href="booking.html">Book Now</a>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
