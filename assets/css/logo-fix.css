@@ -1,9 +1,16 @@
-/* Final rounded brand logo fallback while legacy pages are cleaned */
+/* Final rounded small brand logo fallback while legacy pages are cleaned */
 .brand img,
 .site-header .brand img,
 .site-footer .brand img {
   content: url('../images/IMG_3482.jpeg');
+  width: 44px;
+  height: 44px;
   object-fit: cover;
   border-radius: 50%;
   background: #020707;
+}
+
+.site-footer .brand img {
+  width: 42px;
+  height: 42px;
 }
