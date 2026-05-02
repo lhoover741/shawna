@@ -47,15 +47,6 @@
   filter:saturate(1.05) contrast(1.03);
 }
 
-.hero-mosaic-main img{
-  object-position:center center;
-}
-
-.hero-mosaic-top img,
-.hero-mosaic-bottom img{
-  object-position:center center;
-}
-
 .luxe-info-row{
   gap:.9rem;
 }
@@ -67,77 +58,42 @@
 
 .luxe-mini-card strong{
   font-size:.95rem;
-  margin-bottom:.25rem;
-}
-
-.luxe-mini-card span{
-  font-size:.84rem;
-  line-height:1.55;
-  opacity:.82;
 }
 
 .hero-floating-panel{
   border:1px solid rgba(49,214,214,.28);
   background:rgba(7,16,19,.82);
-  backdrop-filter:blur(12px);
 }
 
-.hero-floating-panel strong{
-  display:block;
-  font-size:1rem;
-  line-height:1.35;
-  margin:.45rem 0;
+/* LUXE AREAS SECTION */
+.areas-luxe-grid{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:2rem;
+  align-items:center;
 }
 
-.hero-floating-panel p{
-  margin:.35rem 0 0;
-  font-size:.94rem;
-  line-height:1.55;
+.areas-link-panel{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.75rem;
+  padding:1.25rem;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:28px;
+  background:rgba(255,255,255,.04);
 }
 
-.featured-strip-card,
-.service-preview-card,
-.showcase-card,
-.showcase-feature-card,
-.notice,
-.quote-card{
-  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+.areas-link-panel a{
+  padding:1rem;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+  text-decoration:none;
+  font-weight:600;
 }
 
-.featured-strip-card:hover,
-.service-preview-card:hover,
-.showcase-card:hover,
-.showcase-feature-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(49,214,214,.32);
-  box-shadow:0 22px 58px rgba(0,0,0,.32);
-}
-
-@media(max-width:1024px){
-  .hero-copy-shell,
-  .hero-copy-shell p{
-    max-width:100%;
-  }
-
-  .hero-copy-shell h1{
-    max-width:12ch;
-  }
-}
-
-@media(max-width:760px){
-  .hero-mosaic{
-    grid-template-columns:1fr;
-    grid-template-rows:auto;
-  }
-
-  .hero-mosaic-main,
-  .hero-mosaic-top,
-  .hero-mosaic-bottom{
-    grid-row:auto;
-    min-height:260px;
-  }
-
-  .luxe-info-row{
+@media(max-width:800px){
+  .areas-luxe-grid,
+  .areas-link-panel{
     grid-template-columns:1fr;
   }
 }
